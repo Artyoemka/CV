@@ -101,22 +101,24 @@
   /* ============ ГЕРОЙ ============ */
   .hero{position:relative;min-height:100svh;display:flex;flex-direction:column;
     align-items:center;justify-content:center;text-align:center;
-    padding:calc(var(--nav-h) + 40px) 24px 80px;overflow:hidden}
+    padding:calc(var(--nav-h) + 32px) 24px 64px;overflow:hidden}
   .hero .glow-a{width:min(1100px,120vw);height:min(1100px,120vw);left:-14%;top:-40%;
     background:radial-gradient(closest-side,rgba(0,113,227,.16),rgba(0,113,227,0))}
   .hero .glow-b{width:min(900px,100vw);height:min(900px,100vw);right:-10%;top:-30%;
     background:radial-gradient(closest-side,rgba(0,113,227,.10),rgba(0,113,227,0))}
-  .hero-content{position:relative;z-index:1;max-width:1120px;display:flex;flex-direction:column;align-items:center}
+  .hero-content{position:relative;z-index:1;width:min(1120px,100%);display:flex;flex-direction:column;align-items:center}
   .hero-role{font-size:13px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin-bottom:18px}
   .hero h1{max-width:980px;font-size:clamp(42px,7.6vw,78px);font-weight:600;letter-spacing:-.035em;line-height:1.03;text-wrap:balance}
   .hero .sub{margin-top:clamp(20px,3vw,30px);max-width:860px;
     font-size:clamp(18px,2.2vw,25px);font-weight:400;line-height:1.42;color:var(--muted);text-wrap:balance}
   .hero .cta{margin-top:clamp(28px,4vw,44px)}
-  .stats{margin-top:clamp(48px,8vw,92px);display:flex;flex-wrap:wrap;justify-content:center;row-gap:18px}
-  .stat{padding:6px clamp(24px,4vw,56px);position:relative}
-  .stat + .stat::before{content:"";position:absolute;left:0;top:14%;height:72%;width:1px;background:var(--line)}
-  .stat .n{font-size:clamp(30px,4.4vw,46px);font-weight:600;letter-spacing:-.01em;white-space:nowrap}
-  .stat .l{margin-top:7px;font-size:14px;line-height:1.4;color:var(--muted);max-width:240px;text-wrap:balance}
+  .stats{width:min(1040px,100%);margin-top:clamp(40px,5.5vw,64px);
+    display:grid;grid-template-columns:repeat(3,minmax(0,1fr));align-items:stretch}
+  .stat{min-width:0;padding:4px clamp(12px,2vw,28px);position:relative;
+    display:flex;flex-direction:column;align-items:center;justify-content:flex-start}
+  .stat + .stat::before{content:"";position:absolute;left:0;top:8%;height:84%;width:1px;background:var(--line)}
+  .stat .n{font-size:clamp(30px,3.7vw,44px);font-weight:600;letter-spacing:-.01em;white-space:nowrap}
+  .stat .l{margin-top:7px;font-size:14px;line-height:1.4;color:var(--muted);max-width:230px;text-wrap:balance}
   .scroll-hint{position:absolute;left:0;right:0;bottom:26px;z-index:1;font-size:14px;color:var(--muted);
     display:flex;flex-direction:column;align-items:center;gap:6px}
   .scroll-hint .chev{width:18px;height:18px;animation:bob 2s ease-in-out infinite}
@@ -324,8 +326,12 @@
     .tl-lb .lb-sub{display:none}
     .tl-labels{height:24px}
   }
-  @media (max-width:1040px){
-    .stat + .stat::before{display:none}
+  @media (max-width:760px){
+    .hero{padding-bottom:76px}
+    .stats{width:min(360px,100%);grid-template-columns:1fr;gap:0;margin-top:36px}
+    .stat{padding:18px 12px}
+    .stat + .stat::before{left:12%;top:0;width:76%;height:1px}
+    .stat .n{font-size:clamp(30px,10vw,40px)}
   }
   @media (max-width:900px){
     .cards{grid-template-columns:repeat(2,1fr)}
@@ -336,9 +342,8 @@
     :root{--nav-h:50px}
     .nav-inner{gap:16px;font-size:13px}
     .nav .hide-sm{display:none}
-    .stats{gap:4px 0}
-    .stat{padding:10px 20px}
-    .stat + .stat::before{display:none}
+    .stats{gap:0}
+    .stat{padding:16px 12px}
     .cards{grid-template-columns:1fr;gap:16px}
     .slot,.slot:nth-child(2n){margin-top:0}
     .float{animation:none;will-change:auto}       /* на мобилке карточки не «плавают» — стопка */
